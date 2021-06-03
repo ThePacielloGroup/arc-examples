@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARC.Examples.UnitTestingAccessibility", "ARC.Examples.UnitTestingAccessibility\ARC.Examples.UnitTestingAccessibility.csproj", "{8AC8FB66-F308-46A4-8150-0049A2DBA038}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8AC8FB66-F308-46A4-8150-0049A2DBA038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AC8FB66-F308-46A4-8150-0049A2DBA038}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AC8FB66-F308-46A4-8150-0049A2DBA038}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AC8FB66-F308-46A4-8150-0049A2DBA038}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {803956A5-9FAD-4923-9DE5-06FBF48812DD}
+	EndGlobalSection
+EndGlobal

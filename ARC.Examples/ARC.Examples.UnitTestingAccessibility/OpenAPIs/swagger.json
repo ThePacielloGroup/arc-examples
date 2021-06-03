@@ -1,0 +1,4647 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "ARC Monitoring API",
+    "description": "The ARC Monitoring API",
+    "version": "v1"
+  },
+  "paths": {
+    "/v1/AccessibilityPolicy/Domain/{domainId}/Initiatives": {
+      "get": {
+        "tags": [
+          "AccessibilityPolicy"
+        ],
+        "summary": "Get a list of the initiatives for a Domain",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestInitiativePolicyIEnumerableARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/AccessibilityPolicy/Domain/{domainId}/Initiatives/{initiativeId}": {
+      "get": {
+        "tags": [
+          "AccessibilityPolicy"
+        ],
+        "summary": "Get a specific initiative for a Domain",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestInitiativePolicyARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/AccessibilityPolicy/Domain/{domainId}/Initiatives/DomainConformanceReport": {
+      "get": {
+        "tags": [
+          "AccessibilityPolicy"
+        ],
+        "summary": "Get a Conformance Report for all assets in a Domain using the most recent scan results",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyDomainConformanceIEnumerableARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/AccessibilityPolicy/Domain/{domainId}/Initiatives/{initiativeId}/DomainConformanceReport": {
+      "get": {
+        "tags": [
+          "AccessibilityPolicy"
+        ],
+        "summary": "Get a Conformance Report for all assets in a Domain using the most recent scan results focusing on a single initiative",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyDomainConformanceIEnumerableARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/AccessibilityPolicy/Domain/{domainId}/Initiatives/AssetConformanceReport/{assetId}": {
+      "get": {
+        "tags": [
+          "AccessibilityPolicy"
+        ],
+        "summary": "Get a Conformance Report for a specific asset using the most recent scan results",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyAssetConformanceIEnumerableARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/AccessibilityPolicy/Domain/{domainId}/Initiatives/AssetConformanceReport": {
+      "get": {
+        "tags": [
+          "AccessibilityPolicy"
+        ],
+        "summary": "Get a Conformance Report for a domain using the most recent scan results",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyAssetConformanceIEnumerableARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/AccessibilityPolicy/Domain/{domainId}/Initiatives/{initiativeId}/AssetConformanceReport/{assetId}": {
+      "get": {
+        "tags": [
+          "AccessibilityPolicy"
+        ],
+        "summary": "Get a Conformance Report for an asset using the most recent scan results focusing on a single initiative",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyAssetConformanceIEnumerableARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/AccessibilityPolicy/Domain/{domainId}/Initiatives/{initiativeId}/AssetConformanceReport": {
+      "get": {
+        "tags": [
+          "AccessibilityPolicy"
+        ],
+        "summary": "Get a Conformance Report for an asset using the most recent scan results focusing on a single initiative",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyAssetConformanceIEnumerableARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/AccessibilityPolicy/Domain/{domainId}/EvaluateAssetConformance/{engineKey}/{assetId}": {
+      "get": {
+        "tags": [
+          "AccessibilityPolicy"
+        ],
+        "summary": "Get a Conformance Report for a specific asset using the most recent scan results",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "engineKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetConformanceEvaluationARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Account": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Get the details for the Account based on the arc_account_code request header value",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Account/Domains": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Get a list of Domains for the Account",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DomainListARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Analyze": {
+      "get": {
+        "tags": [
+          "Analyze"
+        ],
+        "summary": "Analyzes a Url with the ARC Rules Engine",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "An encoded Url to be analyzed",
+            "schema": {
+              "type": "string",
+              "description": "An encoded Url to be analyzed",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ARCAnalysisReportARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Analyze/Page/{engineKey}": {
+      "get": {
+        "tags": [
+          "Analyze"
+        ],
+        "summary": "Analyzes a Url with the specified Rules Engine",
+        "parameters": [
+          {
+            "name": "engineKey",
+            "in": "path",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+              "nullable": true
+            }
+          },
+          {
+            "name": "url",
+            "in": "query",
+            "description": "An encoded Url to be analyzed",
+            "schema": {
+              "type": "string",
+              "description": "An encoded Url to be analyzed",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ARCAnalysisReportARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Analyze/Page/{engineKey}/{assetId}": {
+      "get": {
+        "tags": [
+          "Analyze"
+        ],
+        "summary": "Analyzes an Asset identified by Id",
+        "parameters": [
+          {
+            "name": "engineKey",
+            "in": "path",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+              "nullable": true
+            }
+          },
+          {
+            "name": "assetId",
+            "in": "path",
+            "description": "The Id of the Asset in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Asset in the ARC platform",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ARCAnalysisReportARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Assets": {
+      "get": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Gets an Asset from the ARC Platform by Url",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The encoded Url",
+            "schema": {
+              "type": "string",
+              "description": "The encoded Url",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Assets/{assetId}": {
+      "get": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Get an Asset from the ARC Platform by Id",
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "description": "The Id of the Asset in the ARC Platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Asset in the ARC Platform",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Assets/{assetId}/{engine}/History": {
+      "get": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Get the accessibility history for an Asset",
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "description": "The Id of the Asset in the ARC Platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Asset in the ARC Platform",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "engine",
+            "in": "path",
+            "description": "A unique string key used to identify an accessibility rules engine in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an accessibility rules engine in the ARC platform",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetHistoryARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Assets/{assetId}/{engine}/History/{scanlogId}": {
+      "get": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Get the detailed accessibility findings for an Asset using a specific ScanLog entry and Engine combination",
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "description": "The Id of the Asset in the ARC Platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Asset in the ARC Platform",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "engine",
+            "in": "path",
+            "description": "A unique string key used to identify an accessibility rules engine in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an accessibility rules engine in the ARC platform",
+              "nullable": true
+            }
+          },
+          {
+            "name": "scanlogId",
+            "in": "path",
+            "description": "The Id of a Scanlog entry in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of a Scanlog entry in the ARC platform",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetSubtotalCollectionsARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Automation/Session/New": {
+      "get": {
+        "tags": [
+          "Automation"
+        ],
+        "summary": "Starts an analytics session. Session is not ready to use until Status = 400",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutomationSessionARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Automation/Session/Status": {
+      "get": {
+        "tags": [
+          "Automation"
+        ],
+        "summary": "Starts an analytics session. Session is not ready to use until Status = 400",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutomationSessionARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Automation/Session/{sessionID}/Browser/Open": {
+      "post": {
+        "tags": [
+          "Automation"
+        ],
+        "summary": "Opens the browser for this session.",
+        "parameters": [
+          {
+            "name": "sessionID",
+            "in": "path",
+            "description": "The session identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The session identifier.",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BrowserStatusARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Automation/Session/{sessionID}/Browser/Close": {
+      "post": {
+        "tags": [
+          "Automation"
+        ],
+        "summary": "Closes the browser for this session. Can be ReOpened, usefull for removing session data.",
+        "parameters": [
+          {
+            "name": "sessionID",
+            "in": "path",
+            "description": "The session identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The session identifier.",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BrowserStatusARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Automation/Session/{sessionID}/Browser": {
+      "get": {
+        "tags": [
+          "Automation"
+        ],
+        "summary": "Gets the browser opened status.",
+        "parameters": [
+          {
+            "name": "sessionID",
+            "in": "path",
+            "description": "The session identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The session identifier.",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BrowserStatusARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Automation/Session/{sessionID}/Script/Run": {
+      "post": {
+        "tags": [
+          "Automation"
+        ],
+        "summary": "Runs the script to do a set of actions such as naviagte then click. \r\nDoes not send analytic feedback.",
+        "parameters": [
+          {
+            "name": "sessionID",
+            "in": "path",
+            "description": "The session identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The session identifier.",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalysisScript"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalysisScript"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalysisScript"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalysisScript"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Automation/Session/{sessionID}/Script/Step/Run": {
+      "post": {
+        "tags": [
+          "Automation"
+        ],
+        "summary": "Runs the script strp to do a single action such as naviagte or click. \r\nDoes not send analytic feedback.",
+        "parameters": [
+          {
+            "name": "sessionID",
+            "in": "path",
+            "description": "The session identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The session identifier.",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The script step.",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalysisScriptStep"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalysisScriptStep"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalysisScriptStep"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalysisScriptStep"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Automation/Session/{sessionID}/Analyze/Page": {
+      "get": {
+        "tags": [
+          "Automation"
+        ],
+        "summary": "Analyzes the entire currently opened page.",
+        "parameters": [
+          {
+            "name": "sessionID",
+            "in": "path",
+            "description": "The session identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The session identifier.",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetAnalyticsARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Automation/Session/{sessionID}/Analyze/ComponentBy/{searchType}": {
+      "get": {
+        "tags": [
+          "Automation"
+        ],
+        "summary": "Analyzes the component on currently opened page.",
+        "parameters": [
+          {
+            "name": "sessionID",
+            "in": "path",
+            "description": "The session identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The session identifier.",
+              "nullable": true
+            }
+          },
+          {
+            "name": "searchType",
+            "in": "path",
+            "description": "Type of the search.",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/SearchType"
+            }
+          },
+          {
+            "name": "target",
+            "in": "query",
+            "description": "The target.",
+            "schema": {
+              "type": "string",
+              "description": "The target.",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetAnalyticsARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Configuration/Version": {
+      "get": {
+        "tags": [
+          "Configuration"
+        ],
+        "summary": "Get the current version of the ARC API Service",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformVersionARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Configuration/Account": {
+      "get": {
+        "tags": [
+          "Configuration"
+        ],
+        "summary": "Get the details for the Account based on the arc_account_code request header value",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Domains": {
+      "get": {
+        "tags": [
+          "Domains"
+        ],
+        "summary": "Get a list of Domains for the Account",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DomainListARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Domains/{domainId}": {
+      "get": {
+        "tags": [
+          "Domains"
+        ],
+        "summary": "Get the details for a specific Domain by Id",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "description": "The Id of the Domain in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain in the ARC platform",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DomainConfigurationARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Domains/{domainId}/{engineKey}/History": {
+      "get": {
+        "tags": [
+          "Domains"
+        ],
+        "summary": "Get the accessibility history for a Domain",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "description": "The Id of the Domain in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain in the ARC platform",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "engineKey",
+            "in": "path",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DomainHistoryARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Domains/{domainId}/{engineKey}/History/{scanlogId}/AssertionSubtotals": {
+      "get": {
+        "tags": [
+          "Domains"
+        ],
+        "summary": "Get the historic assertion subtotals for a specific Domain, Scanlog and Engine combination",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "description": "The Id of the Domain in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain in the ARC platform",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "engineKey",
+            "in": "path",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+              "nullable": true
+            }
+          },
+          {
+            "name": "scanlogId",
+            "in": "path",
+            "description": "The Id of a Scanlog entry in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of a Scanlog entry in the ARC platform",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssertionSubtotalCollectionARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Domains/{domainId}/{engineKey}/History/{scanlogId}/{assertionKey}/PageTotals": {
+      "get": {
+        "tags": [
+          "Domains"
+        ],
+        "summary": "Get a list of all Assets in the Domain for which a specific Assertion was reported for the Scanlog and Engine combination",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "description": "The Id of the Domain in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain in the ARC platform",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "engineKey",
+            "in": "path",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+              "nullable": true
+            }
+          },
+          {
+            "name": "scanlogId",
+            "in": "path",
+            "description": "The Id of a Scanlog entry in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of a Scanlog entry in the ARC platform",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "assertionKey",
+            "in": "path",
+            "description": "A unique string key used to identify an Assertion within a rules engine of the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an Assertion within a rules engine of the ARC platform",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssertionAssetListingARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Domains/{domainId}/Seeds": {
+      "get": {
+        "tags": [
+          "Domains"
+        ],
+        "summary": "Get a list of Seed Urls for the Domain",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "description": "The Id of the Domain in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain in the ARC platform",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SeedUrlListARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Domains/{domainId}/Exclusions": {
+      "get": {
+        "tags": [
+          "Domains"
+        ],
+        "summary": "Get a list of Exclusion Patterns for the Domain",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "description": "The Id of the Domain in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain in the ARC platform",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExclusionPatternListARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Domains/{domainId}/SessionUrls": {
+      "get": {
+        "tags": [
+          "Domains"
+        ],
+        "summary": "Get a list of Session Urls for the Domain",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "description": "The Id of the Domain in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain in the ARC platform",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionUrlListARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Domains/{domainId}/Assets": {
+      "get": {
+        "tags": [
+          "Domains"
+        ],
+        "summary": "Get a list of assets for the Domain",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "description": "The Id of the Domain in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain in the ARC platform",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetListARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Domains/{domainId}/Folders": {
+      "get": {
+        "tags": [
+          "Domains"
+        ],
+        "summary": "Get a list of Folders for the Domain",
+        "parameters": [
+          {
+            "name": "domainId",
+            "in": "path",
+            "description": "The Id of the Domain in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain in the ARC platform",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FolderListARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Engine/{engineKey}": {
+      "get": {
+        "tags": [
+          "Engine"
+        ],
+        "summary": "Get the details for a Rules Engine in the ARC Platform",
+        "parameters": [
+          {
+            "name": "engineKey",
+            "in": "path",
+            "description": "A unique string key used to identify an accessibility rules engine in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an accessibility rules engine in the ARC platform",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EngineARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Engine/{engineKey}/Assertions": {
+      "get": {
+        "tags": [
+          "Engine"
+        ],
+        "summary": "Get the Assertions define by a specific Rules Engine",
+        "parameters": [
+          {
+            "name": "engineKey",
+            "in": "path",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssertionListARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Engine/{engineKey}/Assertions/{id}": {
+      "get": {
+        "tags": [
+          "Engine"
+        ],
+        "summary": "Get a specific Assertion from a Rules Engine by Id",
+        "parameters": [
+          {
+            "name": "engineKey",
+            "in": "path",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+              "nullable": true
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ARC Platform Id for the assertion",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The ARC Platform Id for the assertion",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssertionARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Folders/{folderId}": {
+      "get": {
+        "tags": [
+          "Folders"
+        ],
+        "summary": "Get the details for a specific Domain Folder by Id",
+        "parameters": [
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "The Id of the Domain Folder in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain Folder in the ARC platform",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FolderARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Folders/{folderId}/Seeds": {
+      "get": {
+        "tags": [
+          "Folders"
+        ],
+        "summary": "Get a list of Seed Urls for the Domain Folder",
+        "parameters": [
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "The Id of the Domain Folder in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain Folder in the ARC platform",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SeedUrlListARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Folders/{folderId}/Assets": {
+      "get": {
+        "tags": [
+          "Folders"
+        ],
+        "summary": "Get a list of assets for the Domain Folder",
+        "parameters": [
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "The Id of the Domain Folder in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain Folder in the ARC platform",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetListARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Folders/{folderId}/{engineKey}/History": {
+      "get": {
+        "tags": [
+          "Folders"
+        ],
+        "summary": "Get the accessibility history for a Domain Folder",
+        "parameters": [
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "The Id of the Domain Folder in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain Folder in the ARC platform",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "engineKey",
+            "in": "path",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DomainFolderHistoryARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Folders/{folderId}/{engineKey}/History/{scanlogId}/AssertionSubtotals": {
+      "get": {
+        "tags": [
+          "Folders"
+        ],
+        "summary": "Returns the historic assertion subtotals for a specific Domain Folder, Scanlog and Rules Engine combination",
+        "parameters": [
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "The Id of the Domain in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain in the ARC platform",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "engineKey",
+            "in": "path",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+              "nullable": true
+            }
+          },
+          {
+            "name": "scanlogId",
+            "in": "path",
+            "description": "The Id of a Scanlog entry in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of a Scanlog entry in the ARC platform",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssertionSubtotalCollectionARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/Folders/{folderId}/{engineKey}/History/{scanlogId}/{assertionKey}/PageTotals": {
+      "get": {
+        "tags": [
+          "Folders"
+        ],
+        "summary": "Get a list of all Assets in the Domain Folder for which a specific Assertion was reported for the Scanlog and Engine combination",
+        "parameters": [
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "The Id of the Domain Folder in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of the Domain Folder in the ARC platform",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "engineKey",
+            "in": "path",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+              "nullable": true
+            }
+          },
+          {
+            "name": "scanlogId",
+            "in": "path",
+            "description": "The Id of a Scanlog entry in the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The Id of a Scanlog entry in the ARC platform",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "assertionKey",
+            "in": "path",
+            "description": "A unique string key used to identify an Assertion within a rules engine of the ARC platform",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A unique string key used to identify an Assertion within a rules engine of the ARC platform",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssertionAssetListingARCResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TestInitiativePolicy": {
+        "type": "object",
+        "properties": {
+          "testInitiativeID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "domainID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "baselineScanLogID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "scanDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "testInitiativePolicyID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "testInitiativePolicyValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "policyCode": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "aeAssertionID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "assertion": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "displayTitle": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "engineKey": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "totalPageCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "nonConformingPageCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "onTrack": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "conformingPercent": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "conformingPercentString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TestInitiativePolicyIEnumerableARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TestInitiativePolicy"
+            },
+            "description": "The response object from the ARC API",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "TestInitiativePolicyARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/TestInitiativePolicy"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "PolicyDomainConformance": {
+        "type": "object",
+        "properties": {
+          "domainID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "testInitiativeID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "baselineScanLogID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "scanLogID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "baselineScan": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "testInitiativePolicyID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "testInitiativePolicyValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "policyCode": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "aeAssertionID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "assertion": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "displayTitle": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "engineKey": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "baseNonConforming": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "targetNonConforming": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "countNonConforming": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "countConforming": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "countAssets": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "conforms": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "percentConforming": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "percentConformingString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "percentNonConforming": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "percentNonConformingString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PolicyDomainConformanceIEnumerableARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyDomainConformance"
+            },
+            "description": "The response object from the ARC API",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "PolicyAssetConformance": {
+        "type": "object",
+        "properties": {
+          "domainID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "scanLogID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "digitalAssetID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "aeAssertionID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "testInitiativePolicyID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "testInitiativePolicyValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "baselineScanLogID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "uri": {
+            "maxLength": 2048,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "locator": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "testInitiativeID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baselineScan": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "policyCode": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "assertion": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "displayTitle": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseNonConforming": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "targetNonConforming": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "countNonConforming": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "conforms": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PolicyAssetConformanceIEnumerableARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyAssetConformance"
+            },
+            "description": "The response object from the ARC API",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "ARCAnalysisAssertion": {
+        "type": "object",
+        "properties": {
+          "assertion": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "source": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ARCAnalysisReport": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "locator": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "elapsedTime": {
+            "type": "number",
+            "format": "double"
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          },
+          "assetId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "engineKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "engineId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errors": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "alerts": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "contrast": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "features": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "structure": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "html5": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "other": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "assertions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ARCAnalysisAssertion"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AssetConformanceEvaluation": {
+        "type": "object",
+        "properties": {
+          "analysisReport": {
+            "$ref": "#/components/schemas/ARCAnalysisReport"
+          },
+          "conformanceRecords": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyAssetConformance"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AssetConformanceEvaluationARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/AssetConformanceEvaluation"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "Account": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id of the Account in the ARC Platform",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "The Name of the Account in the ARC Platform",
+            "nullable": true
+          },
+          "contact": {
+            "type": "string",
+            "description": "The email address of the primary Account contact",
+            "nullable": true
+          },
+          "created": {
+            "type": "string",
+            "description": "The date that the Account was registered with the ARC Platform",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "An Account as represented in the ARC Platform"
+      },
+      "AccountARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/Account"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "Domain": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id of the Domain in the ARC Platform",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "description": "The Title of the Domain in the ARC Platform",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The Description of the Domain",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The Domain URL",
+            "nullable": true
+          },
+          "created": {
+            "type": "string",
+            "description": "The date that the Domain was registered with the ARC Platform",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Indicates if the Domain is currently Active"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The details for a Domain as represented in the ARC Platform"
+      },
+      "DomainListARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Domain"
+            },
+            "description": "The response object from the ARC API",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "ARCAnalysisReportARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/ARCAnalysisReport"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "Asset": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id of the Asset in the ARC Platform",
+            "format": "int32"
+          },
+          "url": {
+            "type": "string",
+            "description": "The Url of the Asset",
+            "nullable": true
+          },
+          "elementSelector": {
+            "type": "string",
+            "description": "The element selector of the Asset",
+            "nullable": true
+          },
+          "typeId": {
+            "type": "integer",
+            "description": "The Id of the Asset type",
+            "format": "int32"
+          },
+          "typeKey": {
+            "type": "string",
+            "description": "The Key of the Asset type",
+            "nullable": true
+          },
+          "defaultAnalyticsEngineId": {
+            "type": "integer",
+            "description": "The Id of the default Analytics Rules Engine for the Asset",
+            "format": "int32"
+          },
+          "defaultAnalyticsEngineKey": {
+            "type": "string",
+            "description": "The Key of the default Analytics Rules Engine for the Asset",
+            "nullable": true
+          },
+          "defaultAccessibilityStandardId": {
+            "type": "integer",
+            "description": "The Id of the default Analytics Rules Engine for the Asset",
+            "format": "int32"
+          },
+          "defaultAccessibilityStandardKey": {
+            "type": "string",
+            "description": "The Key of the default Analytics Rules Engine for the Asset",
+            "nullable": true
+          },
+          "lastScanLogId": {
+            "type": "integer",
+            "description": "The Id of the last Scanlog entry for the Asset",
+            "format": "int32"
+          },
+          "lastScanLogDate": {
+            "type": "string",
+            "description": "The DateTime stamp of the last Scanlog entry for the Asset",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "An Asset as represented in the ARC Platform"
+      },
+      "AssetARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/Asset"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "AnalyticsSummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id of the Asset in the ARC Platform",
+            "format": "int32"
+          },
+          "url": {
+            "type": "string",
+            "description": "The Url of the Asset int he ARC Platform",
+            "nullable": true
+          },
+          "scanlogId": {
+            "type": "integer",
+            "description": "The Id of the Scanlog entry in the ARC Platform",
+            "format": "int32"
+          },
+          "scanDate": {
+            "type": "string",
+            "description": "The datetime marking the completion of the Scan",
+            "format": "date-time"
+          },
+          "engineId": {
+            "type": "integer",
+            "description": "The ID of the Rules Engine in the ARC Platform",
+            "format": "int32"
+          },
+          "engineKey": {
+            "type": "string",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "nullable": true
+          },
+          "assertionCount": {
+            "type": "integer",
+            "description": "A count of Assertions that match the Containers Assertion/Violation parameters",
+            "format": "int32"
+          },
+          "checkpointFailures": {
+            "type": "integer",
+            "description": "The total number of WCAG violations for the Entity",
+            "format": "int32"
+          },
+          "contrast": {
+            "type": "integer",
+            "description": "A count of the Assertions that are classified as Contrast",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A summary of Assertions, Checkpoint and Contrast failures for an Asset, Scanlog and Engine combination"
+      },
+      "AssetHistory": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id of the Asset in the ARC Platform",
+            "format": "int32"
+          },
+          "url": {
+            "type": "string",
+            "description": "The Url of the Asset",
+            "nullable": true
+          },
+          "elementSelector": {
+            "type": "string",
+            "description": "The element selector of the Asset",
+            "nullable": true
+          },
+          "typeId": {
+            "type": "integer",
+            "description": "The Id of the Asset type",
+            "format": "int32"
+          },
+          "typeKey": {
+            "type": "string",
+            "description": "The Key of the Asset type",
+            "nullable": true
+          },
+          "defaultAnalyticsEngineId": {
+            "type": "integer",
+            "description": "The Id of the default Analytics Rules Engine for the Asset",
+            "format": "int32"
+          },
+          "defaultAnalyticsEngineKey": {
+            "type": "string",
+            "description": "The Key of the default Analytics Rules Engine for the Asset",
+            "nullable": true
+          },
+          "defaultAccessibilityStandardId": {
+            "type": "integer",
+            "description": "The Id of the default Analytics Rules Engine for the Asset",
+            "format": "int32"
+          },
+          "defaultAccessibilityStandardKey": {
+            "type": "string",
+            "description": "The Key of the default Analytics Rules Engine for the Asset",
+            "nullable": true
+          },
+          "lastScanLogId": {
+            "type": "integer",
+            "description": "The Id of the last Scanlog entry for the Asset",
+            "format": "int32"
+          },
+          "lastScanLogDate": {
+            "type": "string",
+            "description": "The DateTime stamp of the last Scanlog entry for the Asset",
+            "format": "date-time"
+          },
+          "history": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnalyticsSummary"
+            },
+            "description": "A collection of historic summaries of Assertions, Checkpoint and Contrast failures for an Asset",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The accessibility history of an Asset represented by a collection of Analytics summaries"
+      },
+      "AssetHistoryARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/AssetHistory"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "AnalyticsSubtotal": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the Assertion or the Checkpoint",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the Assertion or the Checkpoint",
+            "nullable": true
+          },
+          "count": {
+            "type": "integer",
+            "description": "A total count of occurences of the Assertion or Checkpoint",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A count of Assertion or Checkpoint occurences"
+      },
+      "AssetSubtotalCollections": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id of the Asset in the ARC Platform",
+            "format": "int32"
+          },
+          "url": {
+            "type": "string",
+            "description": "The Url of the Asset int he ARC Platform",
+            "nullable": true
+          },
+          "scanlogId": {
+            "type": "integer",
+            "description": "The Id of the Scanlog entry in the ARC Platform",
+            "format": "int32"
+          },
+          "scanDate": {
+            "type": "string",
+            "description": "The datetime marking the completion of the Scan",
+            "format": "date-time"
+          },
+          "engineId": {
+            "type": "integer",
+            "description": "The ID of the Rules Engine in the ARC Platform",
+            "format": "int32"
+          },
+          "engineKey": {
+            "type": "string",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "nullable": true
+          },
+          "assertionCount": {
+            "type": "integer",
+            "description": "A count of Assertions that match the Containers Assertion/Violation parameters",
+            "format": "int32"
+          },
+          "checkpointFailures": {
+            "type": "integer",
+            "description": "The total number of WCAG violations for the Entity",
+            "format": "int32"
+          },
+          "contrast": {
+            "type": "integer",
+            "description": "A count of the Assertions that are classified as Contrast",
+            "format": "int32"
+          },
+          "assertions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnalyticsSubtotal"
+            },
+            "description": "A collection of Assertions made for the Asset from a specific Scanlog and Engine combination",
+            "nullable": true
+          },
+          "checkpoints": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnalyticsSubtotal"
+            },
+            "description": "A collection Checkpoint failures for the Asset from a specific Scanlog and Engine combination",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "An Analytics Summary for and asset including collections for Assertions and Checkpoints for a specific Scanlog and Engine combination"
+      },
+      "AssetSubtotalCollectionsARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/AssetSubtotalCollections"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "PooledMachineStatus": {
+        "enum": [
+          0,
+          100,
+          200,
+          300,
+          400,
+          500,
+          600
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AutomationSession": {
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/PooledMachineStatus"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AutomationSessionARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/AutomationSession"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "BrowserStatus": {
+        "type": "object",
+        "properties": {
+          "isOpen": {
+            "type": "boolean",
+            "description": "Gets a value indicating whether this instance is open."
+          }
+        },
+        "additionalProperties": false,
+        "description": "The status of a web browser in the automation utilites"
+      },
+      "BrowserStatusARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/BrowserStatus"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "AnalysisScriptStep": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "command": {
+            "type": "string",
+            "nullable": true
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AnalysisScript": {
+        "type": "object",
+        "properties": {
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnalysisScriptStep"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BooleanARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "type": "boolean",
+            "description": "The response object from the ARC API"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "AnalysisAssertion": {
+        "type": "object",
+        "properties": {
+          "assertion": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "source": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AnalysisReport": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "locator": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "elapsedTime": {
+            "type": "number",
+            "format": "double"
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          },
+          "assetId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "engineKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "engineId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errors": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "alerts": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "contrast": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "features": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "structure": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "html5": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "other": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "assertions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnalysisAssertion"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AssetMetaData": {
+        "type": "object",
+        "properties": {
+          "base64Screenshot": {
+            "type": "string",
+            "nullable": true
+          },
+          "source": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AnalyticsAsset": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "containerId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "locator": {
+            "type": "string",
+            "nullable": true
+          },
+          "locatorTypeKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "stateQualifier": {
+            "type": "string",
+            "nullable": true
+          },
+          "mimeType": {
+            "type": "string",
+            "nullable": true
+          },
+          "extension": {
+            "type": "string",
+            "nullable": true
+          },
+          "autoRefresh": {
+            "type": "boolean"
+          },
+          "refreshImage": {
+            "type": "boolean"
+          },
+          "refreshSource": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AssetAnalytics": {
+        "type": "object",
+        "properties": {
+          "report": {
+            "$ref": "#/components/schemas/AnalysisReport"
+          },
+          "metaData": {
+            "$ref": "#/components/schemas/AssetMetaData"
+          },
+          "asset": {
+            "$ref": "#/components/schemas/AnalyticsAsset"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AssetAnalyticsARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/AssetAnalytics"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "SearchType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "PlatformVersion": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "The Title of the API Service",
+            "nullable": true
+          },
+          "version": {
+            "type": "string",
+            "description": "The current version of the ARC Platform",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The current version of the ARC Platform"
+      },
+      "PlatformVersionARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/PlatformVersion"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "IntegrationCredentials": {
+        "type": "object",
+        "properties": {
+          "accessKey": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "secretKey": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "token": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "useToken": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "IntegrationOptions": {
+        "type": "object",
+        "properties": {
+          "sendMetaData": {
+            "type": "boolean"
+          },
+          "credentials": {
+            "$ref": "#/components/schemas/IntegrationCredentials"
+          },
+          "ephemeralScriptEndpoint": {
+            "type": "string",
+            "nullable": true
+          },
+          "ephemeralScriptType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CrawlerServiceScope": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DomainCrawlerServiceType": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "CrawlerServiceDomainFolderOptions": {
+        "type": "object",
+        "properties": {
+          "folderUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "maxUrls": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "depth": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "seeds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChromeBrowserOptions": {
+        "type": "object",
+        "properties": {
+          "userAgent": {
+            "type": "string",
+            "nullable": true
+          },
+          "windowWidth": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "windowHeight": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "baseTimeOut": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageLoadTimeout": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "commandTimeout": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "asychScriptTimeout": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "clientMarker": {
+            "type": "string",
+            "nullable": true
+          },
+          "analysisDelay": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HttpClientBrowserOptions": {
+        "type": "object",
+        "properties": {
+          "userAgent": {
+            "type": "string",
+            "nullable": true
+          },
+          "allowCookies": {
+            "type": "boolean"
+          },
+          "headers": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SeleniumScriptFormat": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ContextualChromeBrowserOptions": {
+        "type": "object",
+        "properties": {
+          "authenticationScriptFormat": {
+            "$ref": "#/components/schemas/SeleniumScriptFormat"
+          },
+          "authenticationScript": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CrawlerServiceDomainOptions": {
+        "type": "object",
+        "properties": {
+          "domainId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "domainCrawlerType": {
+            "$ref": "#/components/schemas/DomainCrawlerServiceType"
+          },
+          "domainUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "maxUrls": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "depth": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "processScripts": {
+            "type": "boolean"
+          },
+          "analyticsEngines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "seeds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "accessibilityStandard": {
+            "type": "string",
+            "nullable": true
+          },
+          "sessionStateUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "exclusions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "inclusions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "folders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CrawlerServiceDomainFolderOptions"
+            },
+            "nullable": true
+          },
+          "arcAnalysisServiceHost": {
+            "type": "string",
+            "nullable": true
+          },
+          "chromeOptions": {
+            "$ref": "#/components/schemas/ChromeBrowserOptions"
+          },
+          "httpClientOptions": {
+            "$ref": "#/components/schemas/HttpClientBrowserOptions"
+          },
+          "contextualChromeOptions": {
+            "$ref": "#/components/schemas/ContextualChromeBrowserOptions"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CrawlerServiceRequest": {
+        "type": "object",
+        "properties": {
+          "analyticsEndPoint": {
+            "type": "string",
+            "nullable": true
+          },
+          "intergrationEndpoint": {
+            "type": "string",
+            "nullable": true
+          },
+          "intergrationOptions": {
+            "$ref": "#/components/schemas/IntegrationOptions"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/CrawlerServiceScope"
+          },
+          "variantKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "domainOptions": {
+            "$ref": "#/components/schemas/CrawlerServiceDomainOptions"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DomainConfiguration": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id of the Domain in the ARC Platform",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "description": "The Title of the Domain in the ARC Platform",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The Description of the Domain",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The Domain URL",
+            "nullable": true
+          },
+          "created": {
+            "type": "string",
+            "description": "The date that the Domain was registered with the ARC Platform",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Indicates if the Domain is currently Active"
+          },
+          "crawlerConiguration": {
+            "$ref": "#/components/schemas/CrawlerServiceRequest"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Response Object for Account Domain List requests"
+      },
+      "DomainConfigurationARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/DomainConfiguration"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "DomainHistory": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id of the Domain in the ARC Platform",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "description": "The Title of the Domain in the ARC Platform",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The Description of the Domain",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The Domain URL",
+            "nullable": true
+          },
+          "created": {
+            "type": "string",
+            "description": "The date that the Domain was registered with the ARC Platform",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Indicates if the Domain is currently Active"
+          },
+          "history": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnalyticsSummary"
+            },
+            "description": "A collection of historic summaries of Assertions, Checkpoint and Contrast failures for a Domain",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The accessibility history of a Domain represented by a collection of Analytics summaries"
+      },
+      "DomainHistoryARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/DomainHistory"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "AssertionSubtotal": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id for the Assertion as defined in the ARC Repository",
+            "format": "int32"
+          },
+          "engineKey": {
+            "type": "string",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "nullable": true
+          },
+          "assertionKey": {
+            "type": "string",
+            "description": "A unique string key used to identify an Assertion within a Rules Engine of the ARC platform",
+            "nullable": true
+          },
+          "count": {
+            "type": "integer",
+            "description": "A total count of occurences of the Subtotal Entity",
+            "format": "int32"
+          },
+          "pageCount": {
+            "type": "integer",
+            "description": "The total number of pages on which the occurences occured",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A subtotal of the count of occurences and total number of pages for a specific Assertion"
+      },
+      "AssertionSubtotalCollection": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ARC Platform Id for the related entity",
+            "format": "int32"
+          },
+          "scanlogId": {
+            "type": "integer",
+            "description": "The Id of the Scanlog entry in the ARC Platform",
+            "format": "int32"
+          },
+          "scanDate": {
+            "type": "string",
+            "description": "The datetime marking the completion of the Scan",
+            "format": "date-time"
+          },
+          "engineId": {
+            "type": "integer",
+            "description": "The ID of the Rules Engine in the ARC Platform",
+            "format": "int32"
+          },
+          "engineKey": {
+            "type": "string",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "nullable": true
+          },
+          "assertionSubtotals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AssertionSubtotal"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "A collection of Assertion subtotals for a specific Scanlog and Engine combination"
+      },
+      "AssertionSubtotalCollectionARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/AssertionSubtotalCollection"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "AssertionAssetListing": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id for the Assertion as defined in the ARC Repository",
+            "format": "int32"
+          },
+          "engineKey": {
+            "type": "string",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "nullable": true
+          },
+          "assertionKey": {
+            "type": "string",
+            "description": "A unique string key used to identify an Assertion within a Rules Engine of the ARC platform",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the Assertion",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The Description of the Assertion",
+            "nullable": true
+          },
+          "categoryId": {
+            "type": "integer",
+            "description": "The Category Id",
+            "format": "int32"
+          },
+          "category": {
+            "type": "string",
+            "description": "The Category",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Indicates if the Assertion is active"
+          },
+          "checkpoint": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "A Collection of the related checkpoint failures",
+            "nullable": true
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnalyticsSummary"
+            },
+            "description": "Collection of Assets with Analytics summaries for a specific Assertion",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "A listing of Assets relating to an Assertion"
+      },
+      "AssertionAssetListingARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/AssertionAssetListing"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "SeedUrl": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The Url of an Asset for the Analytics Service to process at the start of a Scan",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "A Seed Url used by the Analytics Service when scanning for Assets in Domains and Domain Fodlers"
+      },
+      "SeedUrlListARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SeedUrl"
+            },
+            "description": "The response object from the ARC API",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "ExclusionPattern": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id of the Exclusion Pattern within the ARC Platform",
+            "format": "int32"
+          },
+          "domainId": {
+            "type": "integer",
+            "description": "The Id of the associated Domain in the ARC Platform",
+            "format": "int32"
+          },
+          "pattern": {
+            "type": "string",
+            "description": "The text pattern used by the Analytics Service to exclude Urls from the scan of a Domain",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "An Exclusion Pattern used by the Analytics Service to filter assets during scans"
+      },
+      "ExclusionPatternListARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExclusionPattern"
+            },
+            "description": "The response object from the ARC API",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "SessionUrl": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id of the Session State Url within the ARC Platform",
+            "format": "int32"
+          },
+          "domainId": {
+            "type": "integer",
+            "description": "The Id of the associated Domain in the ARC Platform",
+            "format": "int32"
+          },
+          "url": {
+            "type": "string",
+            "description": "The Url for the Analytics Service to visit in order to establish necessary session data",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "description": "The text title to identify the Domain Session State Url",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The optional description of the Domain Session State Url",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Indicates if the Domain Session State Url is active"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A Url that establishes Session State for the Analytics Service"
+      },
+      "SessionUrlListARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SessionUrl"
+            },
+            "description": "The response object from the ARC API",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "AssetListARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Asset"
+            },
+            "description": "The response object from the ARC API",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "Folder": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id of the Domain Folder in the ARC Platform",
+            "format": "int32"
+          },
+          "domainId": {
+            "type": "integer",
+            "description": "The Id of the associated Domain in the ARC Platform",
+            "format": "int32"
+          },
+          "baseUrl": {
+            "type": "string",
+            "description": "The Base Url of the Domain Folder which is used by the Analytics Service to match Assets with the Folder",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "description": "The text displayed to identify the Domain Folder in the ARC Portal and Administration service",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "An optional description of the Domain Folder",
+            "nullable": true
+          },
+          "scanDepth": {
+            "type": "integer",
+            "description": "Recursion depth for the Domain Folder used by the Analytics Service",
+            "format": "int32"
+          },
+          "maxUrl": {
+            "type": "integer",
+            "description": "Maximum number of Assets that the Analytics Service should scan for the Domain Folder",
+            "format": "int32"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Indicates if the Domain Folder is active"
+          },
+          "lastScanId": {
+            "type": "integer",
+            "description": "The last Scanlog ID for the Domain Folder",
+            "format": "int32"
+          },
+          "created": {
+            "type": "string",
+            "description": "The date on which the Domain Folder was created in the ARC Platform",
+            "format": "date-time"
+          },
+          "updated": {
+            "type": "string",
+            "description": "The date on which the Domain Folder was updated in the ARC Platform",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A Domain Folder as represented by the ARC Platform"
+      },
+      "FolderListARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Folder"
+            },
+            "description": "The response object from the ARC API",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "Engine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id of the Rules Engine in the ARC Platform",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "description": "The name of the Analytics Engine",
+            "nullable": true
+          },
+          "engineKey": {
+            "type": "string",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The Description of the Rules Engine",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "An Analytics Rules Engine as represented in the ARC Platform"
+      },
+      "EngineARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/Engine"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "Assertion": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id for the Assertion as defined in the ARC Repository",
+            "format": "int32"
+          },
+          "engineKey": {
+            "type": "string",
+            "description": "A unique string key used to identify an Rules Engine in the ARC platform",
+            "nullable": true
+          },
+          "assertionKey": {
+            "type": "string",
+            "description": "A unique string key used to identify an Assertion within a Rules Engine of the ARC platform",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the Assertion",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The Description of the Assertion",
+            "nullable": true
+          },
+          "categoryId": {
+            "type": "integer",
+            "description": "The Category Id",
+            "format": "int32"
+          },
+          "category": {
+            "type": "string",
+            "description": "The Category",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Indicates if the Assertion is active"
+          },
+          "checkpoint": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "A Collection of the related checkpoint failures",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The details for an Assertion in the ARC Platform"
+      },
+      "AssertionListARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assertion"
+            },
+            "description": "The response object from the ARC API",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "AssertionARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/Assertion"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "FolderARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/Folder"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      },
+      "DomainFolderHistory": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The Id of the Domain in the ARC Platform",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "description": "The Title of the Domain in the ARC Platform",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The Description of the Domain",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The Domain URL",
+            "nullable": true
+          },
+          "created": {
+            "type": "string",
+            "description": "The date that the Domain was registered with the ARC Platform",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Indicates if the Domain is currently Active"
+          },
+          "history": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnalyticsSummary"
+            },
+            "description": "A collection of historic summaries of Assertions, Checkpoint and Contrast failures for a Domain Folder",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The accessibility history of a Domain Folder represented by a collection of Analytics summaries"
+      },
+      "DomainFolderHistoryARCResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The request made of the service expressed as a resource path",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "Indication if the request was a SUCCESS or FAILURE",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "If the request was a FAILURE, a message explaining the exception",
+            "nullable": true
+          },
+          "arcAccountCode": {
+            "type": "string",
+            "description": "The arc_account_code header value supplied with the request",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/DomainFolderHistory"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The ARC API response wrapper"
+      }
+    },
+    "securitySchemes": {
+      "Account Code": {
+        "type": "apiKey",
+        "description": "Your ARC account code",
+        "name": "arc-account-code",
+        "in": "header"
+      },
+      "Subscription Key": {
+        "type": "apiKey",
+        "description": "Your ARC subscription key for the service plan you'd like to use.",
+        "name": "arc-subscription-key",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Account Code": [ ],
+      "Subscription Key": [ ]
+    }
+  ]
+}
