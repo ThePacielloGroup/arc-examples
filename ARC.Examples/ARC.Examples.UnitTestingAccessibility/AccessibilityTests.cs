@@ -1,3 +1,4 @@
+using System;
 using ARCAPI;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -15,21 +16,31 @@ namespace ARC.Examples.UnitTestingAccessibility
         public void Setup()
         {
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Add("arc-account-code", "Your Account Code");
-            httpClient.DefaultRequestHeaders.Add("arc-subscription-key", "Your Subscription Code");
+            httpClient.DefaultRequestHeaders.Add("arc-account-code", "a8711985-514e-4196-9611-419f9adb4882");
+            httpClient.DefaultRequestHeaders.Add("arc-subscription-key", "db51490e-8e89-4269-ba48-1c30736e6606");
 
             _client = new ARCAPI.ARCClient("https://api.tpgarc.com/", httpClient);
         }
 
+        
         [Test]
-        public async Task TestAccessibility()
+        public async Task ValidateAccessibility()
         {
+            // this is a list of domains to test
+            var domainUrls = new[]
+            {
+                "http://demo.admin.tpgarc.com",
+                "https://demo.tpgarc.com",
+                "https://staging.tpgarc.com"
+            };
+            
             var domains = await _client.DomainsAsync();
             var policies = new List<TestInitiativePolicy>();
 
-            //First get any initiative policies
-            foreach (var domain in domains.Result)
+            // pull the domains that we want to scan 
+            foreach (var domain in domains.Result.Where(d => domainUrls.Contains(d.Url)))
             {
+                // now pull the initiatives and policies
                 var initiativesForDomain = await _client.InitiativesAsync(domain.Id);
 
                 foreach (var policy in initiativesForDomain.Result)
@@ -38,8 +49,13 @@ namespace ARC.Examples.UnitTestingAccessibility
                 }
             }
 
+            // if there are no policies, there's nothing more to do.  If you are expecting to always have a policy, you could Assert() a failure here
+            if (policies.Count == 0) 
+                return;
+            
             var session = await _client.NewAsync();
 
+            // start an analytics session.  The session is not ready until PooledMachineStatus == 400 
             while (session.Result.Status != PooledMachineStatus._400)
             {
                 await Task.Delay(1000);
@@ -82,7 +98,7 @@ namespace ARC.Examples.UnitTestingAccessibility
                             //The policy is conforrming if the count of non conforming evaluations is less than or equal to the policy target
                             var policyIsConforming = policy.CountNonConforming > 0 && policy.CountNonConforming <= policy.TargetNonConforming;
 
-                            Assert.IsTrue(policyIsConforming, $"{asset.Result.Url} failed policy: { policy.Title }");
+                            Assert.IsTrue(policyIsConforming, $"{asset.Result.Url} failed policy: { policy.DisplayTitle }");
                         }
                     }
                 });
@@ -90,5 +106,6 @@ namespace ARC.Examples.UnitTestingAccessibility
 
             await _client.CloseAsync(sessionId);
         }
+
     }
 }
