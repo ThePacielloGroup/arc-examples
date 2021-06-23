@@ -4,22 +4,23 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
+using System.Web;
+
 
 namespace ARC.Examples.UnitTestingAccessibility
 {
     public class Tests
     {
-        ARCClient _client = null;
+        private HttpClient _httpClient;
 
         [SetUp]
         public void Setup()
         {
-            var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Add("arc-account-code", "a8711985-514e-4196-9611-419f9adb4882");
-            httpClient.DefaultRequestHeaders.Add("arc-subscription-key", "db51490e-8e89-4269-ba48-1c30736e6606");
-
-            _client = new ARCAPI.ARCClient("https://api.tpgarc.com/", httpClient);
+            _httpClient = new HttpClient() {BaseAddress = new Uri("https://api.tpgarc.com/")};
+            _httpClient.DefaultRequestHeaders.Add("arc-account-code", "a8711985-514e-4196-9611-419f9adb4882");
+            _httpClient.DefaultRequestHeaders.Add("arc-subscription-key", "db51490e-8e89-4269-ba48-1c30736e6606");
         }
 
         
@@ -34,15 +35,14 @@ namespace ARC.Examples.UnitTestingAccessibility
                 "https://staging.tpgarc.com"
             };
             
-            var domains = await _client.DomainsAsync();
+            var domains = await _httpClient.GetFromJsonAsync<DomainListARCResponse>("/v1/Account/Domains");
             var policies = new List<TestInitiativePolicy>();
 
             // pull the domains that we want to scan 
             foreach (var domain in domains.Result.Where(d => domainUrls.Contains(d.Url)))
             {
                 // now pull the initiatives and policies
-                var initiativesForDomain = await _client.InitiativesAsync(domain.Id);
-
+                var initiativesForDomain = await _httpClient.GetFromJsonAsync<TestInitiativePolicyIEnumerableARCResponse>($"/v1/AccessibilityPolicy/Domain/{domain.Id}/Initiatives");
                 foreach (var policy in initiativesForDomain.Result)
                 {
                     policies.Add(policy);
@@ -53,42 +53,41 @@ namespace ARC.Examples.UnitTestingAccessibility
             if (policies.Count == 0) 
                 return;
             
-            var session = await _client.NewAsync();
-
+            var session = await _httpClient.GetFromJsonAsync<AutomationSessionARCResponse>("/v1/Automation/Session/New");
             // start an analytics session.  The session is not ready until PooledMachineStatus == 400 
             while (session.Result.Status != PooledMachineStatus._400)
             {
                 await Task.Delay(1000);
-                session = await _client.StatusAsync(session.Result.SessionId);
+                session = await _httpClient.GetFromJsonAsync<AutomationSessionARCResponse>($"/v1/Automation/Session/Status?sessionId={session.Result.SessionId}&");
             }
 
             var sessionId = session.Result.SessionId;
 
-            await _client.OpenAsync(sessionId);
+            // open the browser for this session
+            await _httpClient.PostAsync($"/v1/Automation/Session/{sessionId}/Browser/Open", null);
 
             //for each policy set in the domains
             foreach (var policyGroup in policies.GroupBy(x => x.DomainID))
             {
-                var domainConformance = await _client.AssetConformanceReport2Async(policyGroup.Key.Value);
-
+                var domainConformance = await _httpClient.GetFromJsonAsync<PolicyAssetConformanceIEnumerableARCResponse>($"/v1/AccessibilityPolicy/Domain/{policyGroup.Key.Value}/Initiatives/AssetConformanceReport");
                 Assert.Multiple(async () =>
                 {
                     //Check conformance for each unique asset
                     foreach (var assetConformance in domainConformance.Result.GroupBy(x => x.DigitalAssetID))
                     {
                         //Get Asset Details
-                        var asset = await _client.Assets2Async(assetConformance.Key.Value);
+                        var asset = await _httpClient.GetFromJsonAsync<AssetARCResponse>($"/v1/Assets/{assetConformance.Key.Value}");
 
                         //Open the url
-                        await _client.Run2Async(sessionId, new AnalysisScriptStep
+                        // here we are going to ask the server-side browser session to open our URL
+                        await _httpClient.PostAsJsonAsync($"/v1/Automation/Session/{sessionId}/Script/Step/Run", new AnalysisScriptStep
                         {
                             Command = "open",
                             Target = asset.Result.Url
                         });
 
                         //Scan the current page
-                        var evaluationResults = await _client.Page3Async(sessionId);
-
+                        var evaluationResults = await _httpClient.GetFromJsonAsync<AssetAnalyticsARCResponse>($"/v1/Automation/Session/{sessionId}/Analyze/Page");
 
                         foreach (var policy in assetConformance)
                         {
@@ -104,7 +103,7 @@ namespace ARC.Examples.UnitTestingAccessibility
                 });
             }
 
-            await _client.CloseAsync(sessionId);
+            await _httpClient.PostAsync($"/v1/Automation/Session/{sessionId}/Browser/Close", null);
         }
 
     }
