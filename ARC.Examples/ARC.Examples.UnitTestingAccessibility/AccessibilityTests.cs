@@ -19,8 +19,9 @@ namespace ARC.Examples.UnitTestingAccessibility
         public void Setup()
         {
             _httpClient = new HttpClient() {BaseAddress = new Uri("https://api.tpgarc.com/")};
-            _httpClient.DefaultRequestHeaders.Add("arc-account-code", "a8711985-514e-4196-9611-419f9adb4882");
-            _httpClient.DefaultRequestHeaders.Add("arc-subscription-key", "db51490e-8e89-4269-ba48-1c30736e6606");
+
+            _httpClient.DefaultRequestHeaders.Add("arc-account-code", "<your account code from ARC | Settings>");
+            _httpClient.DefaultRequestHeaders.Add("arc-subscription-key", "<your subscription key from ARC | Settings | Teams ");
         }
 
         
